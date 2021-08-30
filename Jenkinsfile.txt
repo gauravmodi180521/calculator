@@ -55,7 +55,6 @@ pipeline{
                             profileName: '22116-gaurav-jenkins', 
                             userMetadata: [[key: 'Name', value: '22116-gaurav-build']]
                 }
-            }
         }
     }
 }
