@@ -34,8 +34,8 @@ pipeline{
 
         stage('Upload to s3 bucket'){
             steps{
-                profileName: '22116-gaurav-jenkins'
-                entries: {
+                profileName '22116-gaurav-jenkins'
+                entries {
                     bucket: '22116-gaurav-jenkins'
                     sourceFile: 'build/*'
                     storageClass: 'STANDARD'
