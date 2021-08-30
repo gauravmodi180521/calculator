@@ -3,9 +3,7 @@ environment{
     PATTERN = 'build/*'
 }
 
-tools {
-    nodejs 'gaurav-22116-nodejs'
-}
+tools {nodejs 'gaurav-22116-nodejs'} 
 
 stages{
     stage('Initialize'){
