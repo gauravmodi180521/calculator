@@ -1,0 +1,46 @@
+environment{
+    BUCKET = '22116-gaurav-jenkins'
+    PATTERN = 'build/*'
+}
+
+tools {
+    nodejs 'gaurav-22116-nodejs'
+}
+
+stages{
+    stage('Initialize'){
+        steps {
+            sh '''
+                npm install
+            '''
+        }
+    }
+
+    stage('Unit Tests') {
+        steps {
+            sh '''
+                npm run test -- --watchAll=false
+            '''
+        }
+    }
+
+    stage('Build') {
+        steps {
+            sh '''
+                npm run build
+            '''
+        }
+    }
+
+    stage('Upload to s3 bucket'){
+        steps{
+            profileName: '22116-gaurav-jenkins'
+            entries: {
+                bucket: '22116-gaurav-jenkins'
+                sourceFile: 'build/*'
+                storageClass: 'STANDARD'
+                selectedRegion: 'us-east-1'
+            }
+        }
+    }
+}
