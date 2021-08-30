@@ -36,10 +36,10 @@ pipeline{
             steps{
                 profileName '22116-gaurav-jenkins'
                 entries {
-                    bucket: '22116-gaurav-jenkins'
-                    sourceFile: 'build/*'
-                    storageClass: 'STANDARD'
-                    selectedRegion: 'us-east-1'
+                    bucket '22116-gaurav-jenkins'
+                    sourceFile 'build/*'
+                    storageClass 'STANDARD'
+                    selectedRegion 'us-east-1'
                 }
             }
         }
