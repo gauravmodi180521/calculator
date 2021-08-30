@@ -34,12 +34,26 @@ pipeline{
 
         stage('Upload to s3 bucket'){
             steps{
-                profileName '22116-gaurav-jenkins'
-                entries {
-                    bucket '22116-gaurav-jenkins'
-                    sourceFile 'build/*'
-                    storageClass 'STANDARD'
-                    selectedRegion 'us-east-1'
+                    s3Upload consoleLogLevel: 'INFO',
+                    dontSetBuildResultOnFailure: false, 
+                    dontWaitForConcurrentBuildCompletion: false, 
+                    entries: [
+                            [bucket: '22116-gaurav-jenkins',
+                            excludedFile: '',
+                            flatten: false, 
+                            gzipFiles: false, 
+                            keepForever: false, 
+                            managedArtifacts: false, 
+                            noUploadOnFailure: false, 
+                            selectedRegion: 'us-east-1', 
+                            showDirectlyInBrowser: false, 
+                            sourceFile: ' build/*', 
+                            storageClass: 'STANDARD', 
+                            uploadFromSlave: false, 
+                            useServerSideEncryption: false]], 
+                            pluginFailureResultConstraint: 'FAILURE', 
+                            profileName: '22116-gaurav-jenkins', 
+                            userMetadata: [[key: 'Name', value: '22116-gaurav-build']]
                 }
             }
         }
